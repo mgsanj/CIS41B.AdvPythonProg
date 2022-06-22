@@ -77,6 +77,22 @@ The database access is controlled by the Server Socket.  The client sends a quer
 Client Socket:
 Requests data from the server.  After receiving the data from the server, the client displays the data.
 
+## Lab 4 - Threading (Lab4.py)
+From this website:
+https://gml.noaa.gov/aggi/aggi.html <br/>
+Scrape the website data or scrape the csv data file (not download): <br/>
+Table 2: Global Radiative Forcing <br/>
+Store the data in your SQLite database from previous lab assignments <br/>
 
+1. Create the 6 agents to handle the annual data.
+2. These agents extract the yearly data  a time over the range 1990 thru 2019.
+3. When the data has been extracted, the plot  a linear regression for each threaded agent.
 
+Threading rules:
+1. Only one agent can access the database at a time.
+2. The database inquiry only request one cell of data per request for data.  
+3. The agents must make repeated requests for annual data.
+
+After collecting the data, plot a liner regression for each gas using either Matplotlib
+or Plotly.
 
