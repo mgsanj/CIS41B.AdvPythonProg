@@ -43,7 +43,7 @@ An additional feature is to program an automatic "query_builder" that can build 
 
 Usage:  Insert the Dataframes from the datafiles, or the dataframe data, into your Database.  Validate your Database operations by outputting the stored data.
 
-## Lab 2 - Data Visualization (Lab3.py)
+## Lab 2 - Data Visualization (Lab2.py)
 
 Scrape, using BeautifulSoup, this webpage:  
 
