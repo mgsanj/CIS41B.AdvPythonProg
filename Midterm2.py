@@ -3,7 +3,8 @@ import re
 import pandas as pd
 import json
 import socket
-    
+
+# --------- question 1 ------------
 class Parser():
 
     def __init__(self, site):
@@ -36,7 +37,7 @@ class Parser():
         json = df.to_json()
         
         return json
-        
+#----------- question 2 ----------------
 class Server:
     def __init__(self,port):
         self.host = socket.gethostname()
@@ -59,7 +60,7 @@ class Server:
             print("from connected user: " + str(data))
             conn.send(data.encode())  # send data to the client
         conn.close()  # close the connection
-        
+# ------------- question 3 ------------------    
 class Client:
     def __init__(self,nport):
         self.host = socket.gethostname()  # as both code is running on same pc
@@ -74,6 +75,57 @@ class Client:
             message = input(" -> ")  # again take input
         self.client_socket.close()  # close the connection
 
+# ------------ question 5 ----------------------       
+'''
+cookiejar = queue.Queue()
+condition = threading.Condition()
+
+clientList = []
+serverList = []
+
+class ConsumerThread(threading.Thread):
+    def run(self):
+        global cookiejar
+        condition.acquire()
+        print("<<client lock acquired>>")
+        if not cookiejar.empty():
+            chip = cookiejar.get()
+            print("client consumed", chip)
+        else:
+            condition.wait()
+        condition.release()
+        print(">>client released<<")
+        time.sleep(0.1)
+            
+class ProducerThread(threading.Thread):
+    def run(self):
+        global data
+        global cookiejar
+        condition.acquire()
+        print("<<server lock acquired>>")
+        if cookiejar.empty():
+            cookiejar.put(data)
+            print("server", data)
+            print(">>server lock released<<")
+            time.sleep(0.1)
+        condition.notify()
+        condition.release()        
+
+
+nruns = (len(json.encode('UTF-8')) // 1024) + 1
+for pc in range(nruns):            
+    clientList.append(ProducerThread())
+    serverList.append(ConsumerThread())
+    
+for pc in range(nruns):            
+    clientList[pc].start()
+    serverList[pc].start()
+    
+for pc in range(nruns):            
+    clientList[pc].join()
+    serverList[pc].join() 
+
+ '''
 
             
     
