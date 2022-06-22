@@ -142,8 +142,8 @@ class OutputStream:
     
         
 if __name__ == '__main__':         
-    csv = "/Users/SanjanaGadaginmath/Downloads/SeaLevel.csv"
-    html = "/Users/SanjanaGadaginmath/Downloads/Co2.html"
+    csv = "SeaLevel.csv"
+    html = "Co2.html"
     parse = FileParser(csv, html)
     htmlDf = parse.parseHTML()
     csvDf = parse.parseCSV()
